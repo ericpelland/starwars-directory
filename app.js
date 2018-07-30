@@ -17,6 +17,18 @@ angularApp.config(function($routeProvider) {
             templateUrl: 'views/person.html',
             controller: 'PersonCtrl',
             controllerAs: 'person'
+        }).when('/films', {
+            templateUrl: 'views/films.html',
+            controller: 'FilmsCtrl',
+            controllerAs: 'films'
+        }).when('/films/:page', {
+            templateUrl: 'views/films.html',
+            controller: 'FilmsCtrl',
+            controllerAs: 'films'
+        }).when('/film/:id', {
+            templateUrl: 'views/film.html',
+            controller: 'FilmCtrl',
+            controllerAs: 'film'
         }).otherwise('/');
 
 });

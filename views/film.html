@@ -1,0 +1,98 @@
+<div ng-include="'shared/spinner.html'" ng-if="loading()"></div>
+
+<div class="panel-container" ng-if="!loading()">
+	<div class="panel panel-default text-center" ng-if="film.title">
+
+		<div class="panel-header">
+			<h2>{{ film.title }}</h2>
+		</div>
+
+		<p><a href="#!/">Home</a>
+			<p>
+
+				<div class="panel-body flex">
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Planets ({{ planets.length }})</li>
+							<li ng-repeat="planet in planets" class="list-group-item">{{ planet }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Starships ({{starships.length}})</li>
+							<li ng-repeat="starship in starships" class="list-group-item">{{ starship }}</li>
+							<li ng-if="starships.length === 0" class="list-group-item">None</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Vehicles ({{vehicles.length}})</li>
+							<li ng-repeat="vehicle in vehicles" class="list-group-item">{{ vehicle }}</li>
+							<li ng-if="vehicles.length === 0" class="list-group-item">None</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Birth Year</li>
+							<li class="list-group-item">{{ film.birth_year }}</li>
+							<li class="list-group-item list-group-item-info">
+								BBY = Before the Battle of Yavin<br> ABY = After the Battle of Yavin
+							</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Episode #</li>
+							<li class="list-group-item">{{ film.episode_id }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Opening Crawl</li>
+							<li class="list-group-item">{{ film.opening_crawl }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Director</li>
+							<li class="list-group-item">{{ film.director }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Producer</li>
+							<li class="list-group-item">{{ film.producer }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Release Date</li>
+							<li class="list-group-item">{{ film.release_date | date}}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Species ({{species.length}})</li>
+							<li ng-repeat="s in species" class="list-group-item">{{ s }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Characters ({{ characters.length }})</li>
+							<li ng-repeat="character in characters" class="list-group-item">{{ character }}</li>
+						</ul>
+					</div>
+				</div>
+
+	</div>
+
+	<div ng-if="!film.title">
+
+		<div class="page-header">
+			<h1>404</h1>
+		</div>
+
+		<a href="#!/">Return Home?</a>
+
+	</div>
+</div>

@@ -4,22 +4,22 @@ services.factory('SwapiService', ['$http',
     function($http) {
         function Swapi() {};
 		Swapi.categories = [
-			// "Films",
+			"Films",
 		    "People",
-		    // "Planets",
-		    // "Species",
-		    // "Starships",
-		    // "Vehicles"
+		    "Planets",
+		    "Species",
+		    "Starships",
+		    "Vehicles"
 		];
 
         Swapi.urls = {
 			"root": 'https://swapi.co/api',
-			// "films": "https://swapi.co/api/films/",
+			"films": "https://swapi.co/api/films/",
 		    "people": "https://swapi.co/api/people/",
-		    // "planets": "https://swapi.co/api/planets/",
-		    // "species": "https://swapi.co/api/species/",
-		    // "starships": "https://swapi.co/api/starships/",
-		    // "vehicles": "https://swapi.co/api/vehicles/"
+		    "planets": "https://swapi.co/api/planets/",
+		    "species": "https://swapi.co/api/species/",
+		    "starships": "https://swapi.co/api/starships/",
+		    "vehicles": "https://swapi.co/api/vehicles/"
 		};
 
 		Swapi.getDataPage = function(category, overridePage = null) {

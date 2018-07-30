@@ -68,6 +68,9 @@ angularApp.controller('PersonCtrl', [
                         $scope.loadingHomeworld = false;
                     });
 
+				if ($scope.person.species.length === 0) {
+                    $scope.loadingSpecies = false;
+                }
                 angular.forEach($scope.person.species, function(speciesUrl) {
                     SwapiService.returnFromUrl(speciesUrl)
                         .then(function(returnedSpecies) {
