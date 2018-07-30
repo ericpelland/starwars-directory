@@ -54,7 +54,11 @@ var translations = {
 		"terrain": "Terrain",
 		"surface water": "Surface Water",
 		"residents": "Residents",
-
+		"classification": "Classification",
+		"designation" : "Designation",
+		"language" : "Language",
+		"average lifespan": "Average Lifespan",
+		"average height": "Average Height"
 	}
 };
 
@@ -101,6 +105,22 @@ angularApp.config(function($routeProvider) {
             templateUrl: 'views/planet.html',
             controller: 'PlanetCtrl',
             controllerAs: 'planet'
+        }).when('/species', {
+            templateUrl: 'views/species.html',
+            controller: 'SpeciesCtrl',
+            controllerAs: 'species'
+        }).when('/species/:page', {
+            templateUrl: 'views/species.html',
+            controller: 'SpeciesCtrl',
+            controllerAs: 'species'
+        }).when('/speciesdetal', {
+            templateUrl: 'views/speciesdetail.html',
+            controller: 'SpeciesDetailCtrl',
+            controllerAs: 'speciesdetail'
+        }).when('/speciesdetail/:id', {
+            templateUrl: 'views/speciesdetail.html',
+            controller: 'SpeciesDetailCtrl',
+            controllerAs: 'speciesdetail'
         }).otherwise('/');
 
 });
