@@ -35,33 +35,57 @@ services.factory('SwapiService', ['$http',
 			if(overridePage) {
 				url += '?page=' + overridePage;
 			}
-			return $http.get(url)
-				.then(function(response) {
+			return $http.get(url).then(
+				function(response) {
 					return response;
-				});
+				},
+		    	function(data) {
+		        	Swapi.handleError();
+					return false;
+		    	}
+			);
         };
 
 		Swapi.search = function(category, val) {
 			var url = Swapi.urls[category] + '?search=' + val;
-			return $http.get(url)
-				.then(function(response) {
+			return $http.get(url).then(
+				function(response) {
 					return response;
-				});
+				},
+		    	function(data) {
+		        	Swapi.handleError();
+					return false;
+		    	}
+			);
         };
 
 		Swapi.item = function(category,id) {
             var url = Swapi.urls[category] + id + '/';
-            return $http.get(url)
-                .then(function(response) {
+            return $http.get(url).then(
+				function(response) {
                     return response;
-                });
+                },
+		    	function(data) {
+		        	Swapi.handleError();
+					return false;
+		    	}
+			);
         };
 
 		Swapi.returnFromUrl = function(url) {
-			return $http.get(url)
-				.then(function(response) {
+			return $http.get(url).then(
+				function(response) {
 					return response;
-				});
+				},
+		    	function(data) {
+		        	Swapi.handleError();
+					return false;
+		    	}
+			);
+		};
+
+		Swapi.handleError = function() {
+			console.log("Swapi connection error.");
 		};
 
         return Swapi;

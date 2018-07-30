@@ -1,6 +1,6 @@
-<div ng-include="'shared/spinner.html'" ng-if="loading()"></div>
+<div ng-include="'shared/spinner.html'" ng-if="loading() && !error"></div>
 
-<div class="panel-container" ng-if="!loading()">
+<div class="panel-container" ng-if="!loading() && !error">
 	<div class="panel panel-default text-center" ng-if="person.name">
 
 		<div class="panel-header">
@@ -102,3 +102,5 @@
 
 	</div>
 </div>
+<div ng-include="'shared/error.html'" ng-if="error"></div>
+<div ng-if"errorMessage.length"><h1>{{errorMessage}}</h1></div>

@@ -11,23 +11,35 @@ angularApp.controller('PlanetsCtrl', [
         $scope.previous = '';
         $scope.searchValue = '';
         $scope.page = $routeParams.page ? Number($routeParams.page) : 1;
+		$scope.error = false;
+		$scope.errorMessage = '';
 
         SwapiService.getDataPage('planets', $scope.page).then(function(data) {
-            $scope.count = data.data.count;
-            $scope.next = data.data.next;
-            $scope.previous = data.data.previous;
-            $scope.planets = data.data.results;
-            $scope.loading = false;
+			if (data) {
+				$scope.count = data.data.count;
+	            $scope.next = data.data.next;
+	            $scope.previous = data.data.previous;
+	            $scope.planets = data.data.results;
+	            $scope.loading = false;
+			} else {
+				$scope.error = true;
+				$scope.errorMessage = "Failed to retrieve data.  Check network connection.";
+			}
         });
 
         $scope.search = function(value) {
             $scope.loading = true;
             SwapiService.search('planets', value).then(function(data) {
-                $scope.page = 1;
-                $scope.next = data.data.next;
-                $scope.previous = data.data.previous;
-                $scope.planets = data.data.results;
-                $scope.loading = false;
+				if (data) {
+					$scope.page = 1;
+	                $scope.next = data.data.next;
+	                $scope.previous = data.data.previous;
+	                $scope.planets = data.data.results;
+	                $scope.loading = false;
+				} else {
+					$scope.error = true;
+					$scope.errorMessage = "Failed to retrieve data.  Check network connection.";
+				}
             });
         };
 
