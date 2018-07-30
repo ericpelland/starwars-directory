@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="AngularApp">
+
+<head>
+	<base href="/">
+	<title>Star Wars Directory</title>
+
+	<!-- include AngualrJS js 1.7.2 -->
+	<script src="assets/angularjs/angular.min.js"></script>
+	<script src="assets/angularjs/angular-route.min.js"></script>
+
+	<!-- Bootstrap 4.1.3-->
+	<link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/bootstrap/bootstrap-theme.min.css">
+	<script src="assets/bootstrap/bootstrap.min.js"></script>
+
+	<!-- JQUERY -->
+	<script src="assets/jquery/jquery.min.js"></script>
+
+	<!-- FontAwesome Icons 5.1.0-->
+	<link rel="stylesheet" href="assets/fontawesome/all.css">
+
+	<!-- app files -->
+	<script type="text/javascript" src="app.js"></script>
+
+	<!-- Controllers -->
+	<script type="text/javascript" src="controllers/main.js"></script>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+	<div class="page-header">
+		<h1>Star Wars Gallactic Directory</h1>
+	</div>
+	<div ng-view></div>
+</body>
+
+</html>

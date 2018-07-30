@@ -1,0 +1,41 @@
+/* Public domain 100% free font */
+/* No attribution required */
+@font-face {
+  font-family: 'StarJedi';
+  src: url('assets/fonts/StarJedi.woff') format('woff'),
+       url('assets/fonts/StarJedi.ttf') format('truetype'),
+       url('assets/fonts/StarJedi.svg#StarJedi') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Public domain 100% free font */
+/* No attribution required */
+@font-face {
+  font-family: 'Starjedi';
+  src: url('assets/fonts/Starjedi.eot');
+  src: url('assets/fonts/Starjedi.woff2') format('woff2'),
+       url('assets/fonts/Starjedi.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+	/* CC0 Creative Commons License for the image */
+	/* No attribution required */
+	background-image: url("assets/imgs/stars.jpg");
+	background-color:black;
+}
+
+h1 {
+	font-family: 'Starjedi';
+	font-weight:normal;
+	font-style:normal;
+	color: white;
+	border: none;
+}
+
+.page-header {
+	text-align: center;
+}
