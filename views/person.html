@@ -1,0 +1,104 @@
+<div ng-include="'shared/spinner.html'" ng-if="loading()"></div>
+
+<div class="panel-container" ng-if="!loading()">
+	<div class="panel panel-default text-center" ng-if="person.name">
+
+		<div class="panel-header">
+			<h2>{{ person.name }}</h2>
+		</div>
+
+		<p><a href="#!/">Home</a>
+			<p>
+
+				<div class="panel-body flex">
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Movies ({{films.length}})</li>
+							<li ng-repeat="film in films" class="list-group-item">{{ film }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Starships Piloted ({{starships.length}})</li>
+							<li ng-repeat="starship in starships" class="list-group-item">{{ starship }}</li>
+							<li ng-if="starships.length === 0" class="list-group-item">None</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Vehicles Piloted ({{vehicles.length}})</li>
+							<li ng-repeat="vehicle in vehicles" class="list-group-item">{{ vehicle }}</li>
+							<li ng-if="vehicles.length === 0" class="list-group-item">None</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Birth Year</li>
+							<li class="list-group-item">{{ person.birth_year }}</li>
+							<li class="list-group-item list-group-item-info">
+								BBY = Before the Battle of Yavin<br> ABY = After the Battle of Yavin
+							</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Eye Color</li>
+							<li class="list-group-item">{{ person.eye_color }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Gender</li>
+							<li class="list-group-item">{{ person.gender }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Hair Color</li>
+							<li class="list-group-item">{{ person.hair_color }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Mass</li>
+							<li class="list-group-item">{{ person.mass }} kg</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Height</li>
+							<li class="list-group-item">{{ person.height }} cm</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Homeworld</li>
+							<li class="list-group-item">{{ person.homeworld }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Skin Color</li>
+							<li class="list-group-item">{{ person.skin_color }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">Species ({{species.length}})</li>
+							<li ng-repeat="s in species" class="list-group-item">{{ s }}</li>
+						</ul>
+					</div>
+				</div>
+
+	</div>
+
+	<div ng-if="!person.name">
+
+		<div class="page-header">
+			<h1>404</h1>
+		</div>
+
+		<a href="#!/">Return Home?</a>
+
+	</div>
+</div>
