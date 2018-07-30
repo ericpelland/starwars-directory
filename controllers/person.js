@@ -17,6 +17,8 @@ angularApp.controller('PersonCtrl', [
         $scope.loadingSpecies = true;
         $scope.id = $routeParams.id;
 
+		$scope.getIdFromUrl = SwapiService.getIdFromUrl;
+
         $scope.loading = function() {
             if (!$scope.loadingPerson ||
                 !$scope.loadingFilms ||
@@ -41,7 +43,7 @@ angularApp.controller('PersonCtrl', [
                 angular.forEach($scope.person.starships, function(starshipUrl) {
                     SwapiService.returnFromUrl(starshipUrl)
                         .then(function(returnedStarship) {
-                            $scope.starships.push(returnedStarship.data.name);
+                            $scope.starships.push(returnedStarship.data);
                             if ($scope.starships.length == $scope.person.starships.length) {
                                 $scope.loadingStarships = false;
                             }
@@ -55,7 +57,7 @@ angularApp.controller('PersonCtrl', [
                 angular.forEach($scope.person.vehicles, function(vehicleUrl) {
                     SwapiService.returnFromUrl(vehicleUrl)
                         .then(function(returnedVehicle) {
-                            $scope.vehicles.push(returnedVehicle.data.name);
+                            $scope.vehicles.push(returnedVehicle.data);
                             if ($scope.vehicles.length == $scope.person.vehicles.length) {
                                 $scope.loadingVehicles = false;
                             }
@@ -74,17 +76,17 @@ angularApp.controller('PersonCtrl', [
                 angular.forEach($scope.person.species, function(speciesUrl) {
                     SwapiService.returnFromUrl(speciesUrl)
                         .then(function(returnedSpecies) {
-                            $scope.species.push(returnedSpecies.data.name);
+                            $scope.species.push(returnedSpecies.data);
                             if ($scope.species.length == $scope.person.species.length) {
                                 $scope.loadingSpecies = false;
                             }
                         });
                 });
 
-                angular.forEach($scope.person.films, function(filmURL) {
-                    SwapiService.returnFromUrl(filmURL)
+                angular.forEach($scope.person.films, function(filmUrl) {
+                    SwapiService.returnFromUrl(filmUrl)
                         .then(function(returnedFilm) {
-                            $scope.films.push(returnedFilm.data.title);
+                            $scope.films.push(returnedFilm.data);
                             if ($scope.films.length == $scope.person.films.length) {
                                 $scope.loadingFilms = false;
                             }

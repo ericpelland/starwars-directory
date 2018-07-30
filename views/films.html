@@ -3,23 +3,23 @@
 <div class="panel-container" ng-if="!loading">
 	<div class="panel panel-default text-center">
 		<div class="panel-header">
-			<h2>Films</h2>
+			<h2>{{ 'films' | translate}}</h2>
 		</div>
 		<p>
-			<a href="#!/">Home</a>
+			<a href="#!/">{{ 'home' | translate}}</a>
 			<p>
 				<div class="panel-body search-container">
-					<input ng-enter="search(searchValue)" type="text" class="form-control" ng-model="searchValue" placeholder="Search..."></input>
-					<button class="btn btn-primary" ng-click="search(searchValue)">Search</button>
+					<input ng-enter="search(searchValue)" type="text" class="form-control" ng-model="searchValue" placeholder="{{ 'search' | translate }}..."></input>
+					<button class="btn btn-primary" ng-click="search(searchValue)">{{ 'search' | translate }}</button>
 				</div>
 	</div>
 	<div class="panel panel-default text-center">
 		<div class="panel-body">
 			<table class="table table-hover table-striped">
 				<tr class="table-header">
-					<th>Title</th>
-					<th>Director</th>
-					<th>Release Date</th>
+					<th>{{ 'title' | translate }}</th>
+					<th>{{ 'director' | translate }}</th>
+					<th>{{ 'release date' | translate }}</th>
 				</tr>
 				<tr ng-repeat="film in films" ng-click="examineFilm(film)">
 					<td>{{ film.title }}</td>
@@ -31,11 +31,11 @@
 				</tr>
 			</table>
 			<div class="">
-				Page {{page}}
+				{{ 'page' | translate }} {{ page }}
 				<br>
-				<button class="btn btn-primary" ng-if="page !== 1" ng-click="previousPage()">Back</button>
-				<button class="btn btn-default" ng-if="!(page * 10 >= count)" ng-click="nextPage()">Next</button>
-				<br>{{count}} films located
+				<button class="btn btn-primary" ng-if="page !== 1" ng-click="previousPage()">{{ 'back' | translate }}</button>
+				<button class="btn btn-default" ng-if="!(page * 10 >= count)" ng-click="nextPage()">{{ 'next' | translate }}</button>
+				<br>{{count}} {{ 'films' | translate }} {{ 'located' | translate }}
 			</div>
 		</div>
 	</div>

@@ -3,12 +3,12 @@
 <div class="panel-container" ng-if="!loading">
 	<div class="panel panel-default text-center">
 		<div class="panel-header">
-			<h2>Categories</h2>
+			<h2>{{ 'categories' | translate }}</h2>
 		</div>
 		<div class="panel-body flex">
 			<div class="col-sm-4" ng-repeat="category in categories" ng-click="selectCategory(category)">
 				<ul class="list-group">
-					<li class="list-group-item list-group-item-info list-group-title">{{ category }}</li>
+					<li class="list-group-item list-group-item-info list-group-title">{{ category | translate}}</li>
 				</ul>
 			</div>
 		</div>

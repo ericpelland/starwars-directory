@@ -22,6 +22,14 @@ services.factory('SwapiService', ['$http',
 		    "vehicles": "https://swapi.co/api/vehicles/"
 		};
 
+		Swapi.getIdFromUrl = function(url) {
+			if(!url){
+				return('');
+			}
+            var index = url.split('/')[url.split('/').length - 2];
+            return(index);
+        };
+
 		Swapi.getDataPage = function(category, overridePage = null) {
 			var url = Swapi.urls[category];
 			if(overridePage) {
