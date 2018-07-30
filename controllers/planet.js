@@ -26,9 +26,9 @@ angularApp.controller('PlanetCtrl', [
         };
 
         SwapiService.item('planets', $scope.id)
-            .then(function(returnedplanet) {
+            .then(function(returnedPlanet) {
 				if (returnedPlanet) {
-					angular.copy(returnedplanet.data, $scope.planet);
+					angular.copy(returnedPlanet.data, $scope.planet);
 	                $scope.loadingplanet = false;
 	                if ($scope.planet.films.length === 0) {
 	                    $scope.loadingFilms = false;
