@@ -1,9 +1,15 @@
 # starwars-directory
 To run 'python -m SimpleHTTPServer 8000'
 
-## Technical Audition
-Please prepare a solution to the problem described here.  Please arrive ready to present your solution to a panel of 3-4 interviewers. Please code in whichever languages you are most proficient.
-Once you have presented your solution, the interviewers will ask questions and provide additional requirements that you will have to incorporate into your design on the fly. This process gives us a chance to see how you solve problems, how advanced your design skills are, how well you present to a group, and how well you think on your feet. The technical audition will last approximately one hour.
+## Project Info
+Angular 1.X required, I used 1.7.2
+UI Framework required, I used Bootstrap v3.3.7
+Display a paginated list for each available category.
+Works on any device/screen size.
+Network + API failures are caught and an error displayed.
+Spinners and loading text that improves the UX when waiting.
+Simple implementation of a translation filter/pipe allowing for different forms of communication.
+Included all root categories from the api, and linked within them.
 
 ## Project
 Create a Galactic Directory of people in the Star Wars universe using the Star Wars API (yeah, that's a thing. https://swapi.co/). It should be based on Angular 1.x and use the UI framework of your choice (Bootstrap, Angular Material, etc). You can design the UX interaction and layout however you wish, but the application should meet the following requirements in an intuitive way:
