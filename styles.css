@@ -90,10 +90,6 @@
 	left: 0px;
 }
 
-.page-header {
-    text-align: center;
-}
-
 .search-container {
     display: flex;
 }
@@ -119,10 +115,6 @@ h1 {
     width: 100%;
 }
 
-.page-header {
-    border-bottom: none;
-}
-
 .panel {
     background-color: white;
 }
@@ -134,6 +126,12 @@ h1 {
 
 .col-sm-4 {
     margin-bottom: 50px;
+}
+
+.page-header {
+	margin-top: 50px;
+	border-bottom: none;
+	text-align: center;
 }
 
 body {
