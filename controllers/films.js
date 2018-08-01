@@ -28,6 +28,7 @@ angularApp.controller('FilmsCtrl', [
         });
 
         $scope.search = function(value) {
+			$scope.searchValue = value;
             $scope.loading = true;
             SwapiService.search('films', value).then(function(data) {
 				if (data) {

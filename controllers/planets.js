@@ -28,6 +28,7 @@ angularApp.controller('PlanetsCtrl', [
         });
 
         $scope.search = function(value) {
+			$scope.searchValue = value;
             $scope.loading = true;
             SwapiService.search('planets', value).then(function(data) {
 				if (data) {

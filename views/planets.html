@@ -9,7 +9,7 @@
 			<a href="#!/">{{ 'home' | translate}}</a>
 			<p>
 				<div class="panel-body search-container">
-					<input ng-enter="search(searchValue)" type="text" class="form-control" ng-model="searchValue" placeholder="{{ 'search' | translate }}..."></input>
+					<input ng-enter="search(searchValue)" type="text" class="form-control" ng-model="searchValue" placeholder="{{ 'search' | translate }}..." value="{{searchValue}}></input>
 					<button class="btn btn-primary" ng-click="search(searchValue)">{{ 'search' | translate }}</button>
 				</div>
 	</div>

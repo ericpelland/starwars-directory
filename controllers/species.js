@@ -28,6 +28,7 @@ angularApp.controller('SpeciesCtrl', [
         });
 
         $scope.search = function(value) {
+			$scope.searchValue = value;
             $scope.loading = true;
             SwapiService.search('species', value).then(function(data) {
 				if (data) {

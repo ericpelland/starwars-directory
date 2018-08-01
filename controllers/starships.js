@@ -28,6 +28,7 @@ angularApp.controller('StarshipsCtrl', [
         });
 
         $scope.search = function(value) {
+			$scope.searchValue = value;
             $scope.loading = true;
             SwapiService.search('starships', value).then(function(data) {
 				if (data) {

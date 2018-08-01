@@ -28,6 +28,7 @@ angularApp.controller('VehiclesCtrl', [
         });
 
         $scope.search = function(value) {
+			$scope.searchValue = value;
             $scope.loading = true;
             SwapiService.search('vehicles', value).then(function(data) {
 				if (data) {
