@@ -1,7 +1,8 @@
 angularApp.controller('CategoryCtrl', [
     '$scope',
     'SwapiService',
-    function($scope, SwapiService) {
+	'$timeout',
+    function($scope, SwapiService, $timeout) {
         $scope.loading = true;
         $scope.items = [];
         $scope.count = 0;
@@ -38,11 +39,7 @@ angularApp.controller('CategoryCtrl', [
                     $scope.items = data.data.results;
                     $scope.loading = false;
 					// Scroll to section
-					if (!hadItem) {
-						$('html, body').animate({
-						    scrollTop: $("#category").offset().top
-						}, 1000);
-					}
+					$scope.scrollTo("#category");
                 } else {
                     $scope.error = true;
                     $scope.errorMessage = "Failed to retrieve data.  Check network connection.";
@@ -63,9 +60,7 @@ angularApp.controller('CategoryCtrl', [
                     $scope.items = data.data.results;
                     $scope.loading = false;
 					//Scroll to element
-                    $('html, body').animate({
-                        scrollTop: $("#category").offset().top
-                    }, 1000);
+                    $scope.scrollTo("#category");
                 } else {
                     $scope.error = true;
                     $scope.errorMessage = "Failed to retrieve data.  Check network connection.";
@@ -91,6 +86,14 @@ angularApp.controller('CategoryCtrl', [
             $scope.parent.page -= 1;
             $scope.initialize();
         };
+
+		// close section
+		$scope.close = function() {
+			$scope.scrollTo('#top');
+			$timeout(() => {
+				$scope.parent.selectedCategory= null;
+			},1000);
+		};
 
 
 		$scope.initialize();

@@ -32,5 +32,11 @@ angularApp.controller('MainCtrl', [
             }
             return '';
         };
+
+		$scope.scrollTo = function(identifier) {
+			$('html, body').animate({
+				scrollTop: $(identifier).offset().top
+			}, 1000);
+		};
     }
 ]);

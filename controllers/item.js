@@ -1,7 +1,8 @@
 angularApp.controller('ItemCtrl', [
     '$scope',
     'SwapiService',
-    function($scope, SwapiService) {
+	'$timeout',
+    function($scope, SwapiService, $timeout) {
         $scope.loading = true;
         $scope.error = false;
         $scope.item = {};
@@ -68,15 +69,21 @@ angularApp.controller('ItemCtrl', [
                         angular.copy(returnedItem.data, $scope.item);
                         $scope.item = $scope.fillData($scope.item);
                         $scope.loading = false;
-                        $('html, body').animate({
-                            scrollTop: $("#item").offset().top
-                        }, 1000);
+                        $scope.scrollTo("#item");
                     } else {
                         $scope.error = true;
                         $scope.errorMessage = "Failed to retrieve data.  Check network connection.";
                     }
                 });
         };
+
+		// close section
+		$scope.close = function() {
+			$scope.scrollTo('#category');
+			$timeout(() => {
+				$scope.parent.selectedItem= null;
+			},1000);
+		};
 
         $scope.initialize();
     }

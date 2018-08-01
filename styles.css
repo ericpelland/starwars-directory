@@ -143,6 +143,10 @@ h1 {
     background: lightblue;
 }
 
+.close {
+	margin: 10px;
+}
+
 body {
     /* CC0 Creative Commons License for the image */
     /* No attribution required */
