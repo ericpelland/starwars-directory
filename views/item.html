@@ -13,10 +13,15 @@
 				<ul class="list-group">
 					<li ng-if="isArray(value)" class="list-group-item list-group-item-info list-group-title">{{ key | translate }} ({{value.length}})</li>
 					<li ng-if="!isArray(value)" class="list-group-item list-group-item-info list-group-title">{{ key | translate }}</li>
-					<li ng-if="isArray(value) && value.length > 0" ng-repeat="v in value track by $index" class="list-group-item">{{ v }}</li>
+
+					<li ng-if="isArray(value) && value.length > 0 && links[v]" ng-repeat="v in value track by $index" class="list-group-item"><a href="" ng-click="switchItem(links[v])">{{ v }}</a></li>
+					<li ng-if="isArray(value) && value.length > 0 && !links[v]" ng-repeat="v in value track by $index" class="list-group-item">{{ v }}</li>
+
+					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited' && !key.includes('date')) && links[v]" class="list-group-item"><a href="" ng-click="switchItem(links[value])">{{ value }}</a></li>
+					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited' && !key.includes('date')) && !links[v]" class="list-group-item">{{ value }}</li>
+
+					<li ng-if="!isArray(value) && (key ==='created' || key === 'edited' || key.includes('date'))" class="list-group-item">{{ value | date }}</li>
 					<li ng-if="isArray(value) && value.length == 0" class="list-group-item">{{ 'none' | translate }}</li>
-					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited')" class="list-group-item">{{ value }}</li>
-					<li ng-if="!isArray(value) && (key ==='created' || key === 'edited')" class="list-group-item">{{ value | date }}</li>
 				</ul>
 			</div>
 		</div>

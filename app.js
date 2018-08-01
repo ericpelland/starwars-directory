@@ -2,11 +2,12 @@
 var lang = window.navigator.language || window.navigator.userLanguage;
 
 //TODO: Remove after adding support for other languages.
+// Default any browser language detected to en-US
 if (lang !== 'en-US') {
     lang = "en-US";
 }
 
-//Translations, can be exported to i18n folder once complex
+//Translations, can be exported to i18n files, leaving here for now.
 var translations = {
     "en-US": {
         "categories": "Categories",
@@ -79,89 +80,18 @@ var translations = {
 };
 
 var angularApp = angular.module('AngularApp', ['ngRoute', 'swapi']);
+// configure routing to use single page, single parent controller
 angularApp.config(function($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/main.html',
             controller: 'MainCtrl',
             controllerAs: 'main'
-        }).when('/people', {
-            templateUrl: 'views/people.html',
-            controller: 'PeopleCtrl',
-            controllerAs: 'main'
-        }).when('/people/:page', {
-            templateUrl: 'views/people.html',
-            controller: 'PeopleCtrl',
-            controllerAs: 'people'
-        }).when('/person/:id', {
-            templateUrl: 'views/person.html',
-            controller: 'PersonCtrl',
-            controllerAs: 'person'
-        }).when('/films', {
-            templateUrl: 'views/films.html',
-            controller: 'FilmsCtrl',
-            controllerAs: 'films'
-        }).when('/films/:page', {
-            templateUrl: 'views/films.html',
-            controller: 'FilmsCtrl',
-            controllerAs: 'films'
-        }).when('/film/:id', {
-            templateUrl: 'views/film.html',
-            controller: 'FilmCtrl',
-            controllerAs: 'film'
-        }).when('/planets/:page', {
-            templateUrl: 'views/planets.html',
-            controller: 'PlanetsCtrl',
-            controllerAs: 'planets'
-        }).when('/planets', {
-            templateUrl: 'views/planets.html',
-            controller: 'PlanetsCtrl',
-            controllerAs: 'planets'
-        }).when('/planet/:id', {
-            templateUrl: 'views/planet.html',
-            controller: 'PlanetCtrl',
-            controllerAs: 'planet'
-        }).when('/species', {
-            templateUrl: 'views/species.html',
-            controller: 'SpeciesCtrl',
-            controllerAs: 'species'
-        }).when('/species/:page', {
-            templateUrl: 'views/species.html',
-            controller: 'SpeciesCtrl',
-            controllerAs: 'species'
-        }).when('/speciesdetail/:id', {
-            templateUrl: 'views/speciesdetail.html',
-            controller: 'SpeciesDetailCtrl',
-            controllerAs: 'speciesdetail'
-        }).when('/starships', {
-            templateUrl: 'views/starships.html',
-            controller: 'StarshipsCtrl',
-            controllerAs: 'starships'
-        }).when('/starships/:page', {
-            templateUrl: 'views/starships.html',
-            controller: 'StarshipsCtrl',
-            controllerAs: 'starshipsdetail'
-        }).when('/starship/:id', {
-            templateUrl: 'views/starship.html',
-            controller: 'StarshipCtrl',
-            controllerAs: 'starshipdetail'
-        }).when('/vehicles', {
-            templateUrl: 'views/vehicles.html',
-            controller: 'VehiclesCtrl',
-            controllerAs: 'vehicles'
-        }).when('/vehicles/:page', {
-            templateUrl: 'views/vehicles.html',
-            controller: 'VehiclesCtrl',
-            controllerAs: 'vehiclesdetail'
-        }).when('/vehicle/:id', {
-            templateUrl: 'views/vehicle.html',
-            controller: 'VehicleCtrl',
-            controllerAs: 'vehicledetail'
         }).otherwise('/');
 
 });
 
-//Custom directive for enter click.
+//Custom directive for enter click, because this should be standard.
 angularApp.directive('ngEnter', function() {
     return function(scope, element, attrs) {
         element.bind("keydown keypress", function(event) {

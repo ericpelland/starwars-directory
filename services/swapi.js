@@ -7,6 +7,7 @@ services.factory('SwapiService', ['$http',
         Swapi.categories;
         Swapi.loading = true;
 
+		// strip id from api url
         Swapi.getIdFromUrl = function(url) {
             if (!url) {
                 return ('');
@@ -15,6 +16,7 @@ services.factory('SwapiService', ['$http',
             return (index);
         };
 
+		// strip category from api url
         Swapi.getCategoryFromUrl = function(url) {
             if (!url) {
                 return ('');
@@ -23,6 +25,7 @@ services.factory('SwapiService', ['$http',
             return (index);
         };
 
+		// get categories from root api url
         Swapi.getCategories = function() {
             if (Swapi.categories) {
                 return Swapi.categories;
@@ -40,10 +43,12 @@ services.factory('SwapiService', ['$http',
             }
         };
 
+		// on service init, retrieve categories
         Swapi.getCategories().then(function() {
             Swapi.loading = false;
         });
 
+		// get all the items from within a category, with an option to get specific pages
         Swapi.getDataPage = function(category, overridePage = null) {
             var url = Swapi.categories[category];
             if (overridePage) {
@@ -60,6 +65,7 @@ services.factory('SwapiService', ['$http',
             );
         };
 
+		// search through the category by item name or title
         Swapi.search = function(category, val) {
             var url = Swapi.categories[category] + '?search=' + val;
             return $http.get(url).then(
@@ -73,6 +79,7 @@ services.factory('SwapiService', ['$http',
             );
         };
 
+		// get data on a specific item by id, within a specified category
         Swapi.item = function(category, id) {
             var url = Swapi.categories[category] + id + '/';
             return $http.get(url).then(
@@ -86,6 +93,7 @@ services.factory('SwapiService', ['$http',
             );
         };
 
+		// return data directly from a givin api url
         Swapi.returnFromUrl = function(url) {
             return $http.get(url).then(
                 function(response) {

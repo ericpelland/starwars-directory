@@ -1,9 +1,7 @@
 angularApp.controller('CategoryCtrl', [
     '$scope',
     'SwapiService',
-    '$location',
-    '$routeParams',
-    function($scope, SwapiService, $location, $routeParams) {
+    function($scope, SwapiService) {
         $scope.loading = true;
         $scope.items = [];
         $scope.count = 0;
@@ -12,8 +10,9 @@ angularApp.controller('CategoryCtrl', [
         $scope.searchValue = '';
         $scope.error = false;
         $scope.errorMessage = '';
-        $scope.selectedItem = null;
+        $scope.parent.selectedItem = null;
 
+		// Watch for changes on the selected category
         $scope.$watch('parent.selectedCategory', function(new_val) {
             if (new_val) {
                 $scope.error = false;
@@ -22,20 +21,15 @@ angularApp.controller('CategoryCtrl', [
             }
         });
 
-        $scope.getItemAttributeValue = function(item, index) {
-            return (item[Object.keys(item)[index]]);
-        };
-
-        $scope.getItemAttributeKey = function(item, index) {
-            if (item) {
-                return (Object.keys(item)[index]);
-            }
-            return '';
-        };
-
+		// initialize
         $scope.initialize = function() {
             $scope.loading = true;
-            $scope.selectedItem = null;
+			var hadItem = false;
+			if ($scope.parent.selectedItem) {
+				$scope.parent.selectedItem = null;
+				hadItem = true;
+			}
+			// Get categories data.
             SwapiService.getDataPage($scope.parent.selectedCategory, $scope.parent.page).then(function(data) {
                 if (data) {
                     $scope.count = data.data.count;
@@ -43,17 +37,20 @@ angularApp.controller('CategoryCtrl', [
                     $scope.previous = data.data.previous;
                     $scope.items = data.data.results;
                     $scope.loading = false;
-                    $('html, body').animate({
-                        scrollTop: $("#category").offset().top
-                    }, 1000);
+					// Scroll to section
+					if (!hadItem) {
+						$('html, body').animate({
+						    scrollTop: $("#category").offset().top
+						}, 1000);
+					}
                 } else {
                     $scope.error = true;
                     $scope.errorMessage = "Failed to retrieve data.  Check network connection.";
                 }
             });
         };
-        $scope.initialize();
 
+		// Handle searching through name and title for the category
         $scope.search = function(value) {
             $scope.searchValue = value;
             $scope.loading = true;
@@ -65,6 +62,7 @@ angularApp.controller('CategoryCtrl', [
                     $scope.previous = data.data.previous;
                     $scope.items = data.data.results;
                     $scope.loading = false;
+					//Scroll to element
                     $('html, body').animate({
                         scrollTop: $("#category").offset().top
                     }, 1000);
@@ -75,20 +73,26 @@ angularApp.controller('CategoryCtrl', [
             });
         };
 
+		// Examine data on specific item
         $scope.examineItem = function(item) {
-            $scope.selectedItem = item;
+            $scope.parent.selectedItem = item;
         };
 
+		// paginate to the next set of data
         $scope.nextPage = function() {
             $scope.loading = true;
             $scope.parent.page += 1;
             $scope.initialize();
         };
 
+		// paginate to the previous set of data
         $scope.previousPage = function() {
             $scope.loading = true;
             $scope.parent.page -= 1;
             $scope.initialize();
         };
+
+
+		$scope.initialize();
     }
 ]);

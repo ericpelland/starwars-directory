@@ -1,4 +1,5 @@
 # starwars-directory
+To run 'python -m SimpleHTTPServer 8000'
 
 ## Technical Audition
 Please prepare a solution to the problem described here.  Please arrive ready to present your solution to a panel of 3-4 interviewers. Please code in whichever languages you are most proficient.
