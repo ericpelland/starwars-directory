@@ -13,6 +13,18 @@
 				<div class="panel-body flex">
 					<div class="col-sm-4">
 						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'created' | translate }}</li>
+							<li class="list-group-item">{{ species.created | date }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'edited' | translate }}</li>
+							<li class="list-group-item">{{ species.edited | date }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
 							<li class="list-group-item list-group-item-info list-group-title">{{ 'classification' | translate}}</li>
 							<li class="list-group-item">{{ species.classification }}</li>
 						</ul>

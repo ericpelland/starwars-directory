@@ -62,17 +62,19 @@ var translations = {
 		"model": "Model",
 		"starship class": "Starship Class",
 		"vehicle class": "Vehicle Class",
-		'pilots': "Pilots",
-		'max time between resupply': "Max Time Between Resupply",
-		'cargo capacity': "Cargo Capacity",
-		'max megalights per hour': "Max Megalights per Hour",
-		'hyperdrive rating': "Hyperdrive Rating",
-		'max atmosphering speed': "Max Atmosphering Speed",
-		'passengers': "Passengers",
-		'crew members': "Crew Members",
-		'length': "Length",
-		'cost in credits': "Cost in Credits",
-		'manufacturer': "Manufacturer"
+		"pilots": "Pilots",
+		"max time between resupply": "Max Time Between Resupply",
+		"cargo capacity": "Cargo Capacity",
+		"max megalights per hour": "Max Megalights per Hour",
+		"hyperdrive rating": "Hyperdrive Rating",
+		"max atmosphering speed": "Max Atmosphering Speed",
+		"passengers": "Passengers",
+		"crew members": "Crew Members",
+		"length": "Length",
+		"cost in credits": "Cost in Credits",
+		"manufacturer": "Manufacturer",
+		"created": "Created",
+		"edited": "Edited"
 	}
 };
 
