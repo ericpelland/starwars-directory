@@ -28,13 +28,14 @@
 					<td colspan="6">No Results</td>
 				</tr>
 			</table>
-			<div class="">
+			<div ng-if="count > 10">
 				{{ 'page' | translate }} {{ parent.page }}
 				<br>
-				<button class="btn btn-primary" ng-if="page !== 1" ng-click="previousPage()">{{ 'back' | translate }}</button>
-				<button class="btn btn-default" ng-if="!(page * 10 >= count)" ng-click="nextPage()">{{ 'next' | translate }}</button>
-				<br>{{count}} {{ parent.selectedCategory | translate }} {{ 'located' | translate }}
+				<button class="btn btn-primary" ng-if="parent.page !== 1" ng-click="previousPage()">{{ 'back' | translate }}</button>
+				<button class="btn btn-default" ng-if="!(parent.page * 10 >= count)" ng-click="nextPage()">{{ 'next' | translate }}</button>
+
 			</div>
+			<br>{{count}} {{ parent.selectedCategory | translate }} {{ 'located' | translate }}
 		</div>
 	</div>
 </div>
