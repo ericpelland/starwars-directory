@@ -1,6 +1,6 @@
-<div ng-include="'shared/spinner.html'" ng-if="loading() && !error"></div>
+<div ng-include="'shared/spinner.html'" ng-if="loadingVehicle && !error"></div>
 
-<div class="panel-container" ng-if="!loading() && !error">
+<div class="panel-container" ng-if="!loadingVehicle && !error">
 	<div class="panel panel-default text-center" ng-if="vehicle.name">
 
 		<div class="panel-header">
