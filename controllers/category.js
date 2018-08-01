@@ -25,6 +25,7 @@ angularApp.controller('CategoryCtrl', [
         // initialize
         $scope.initialize = function() {
             $scope.loading = true;
+			$scope.searchValue = '';
             var hadItem = false;
             if ($scope.parent.selectedItem) {
                 $scope.parent.selectedItem = null;
