@@ -108,7 +108,7 @@ h1 {
     box-shadow: 0px 0px 50px #0ff;
     width: 95%;
     margin: auto;
-	opacity: .9;
+    opacity: .9;
 }
 
 .panel-container {
@@ -144,7 +144,7 @@ h1 {
 }
 
 .close {
-	margin: 10px;
+    margin: 10px;
 }
 
 body {
