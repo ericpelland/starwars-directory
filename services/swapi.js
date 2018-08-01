@@ -3,24 +3,9 @@ var services = angular.module('swapi', []);
 services.factory('SwapiService', ['$http',
     function($http) {
         function Swapi() {};
-		Swapi.categories = [
-			"Films",
-		    "People",
-		    "Planets",
-		    "Species",
-		    "Starships",
-		    "Vehicles"
-		];
-
-        Swapi.urls = {
-			"root": 'https://swapi.co/api',
-			"films": "https://swapi.co/api/films/",
-		    "people": "https://swapi.co/api/people/",
-		    "planets": "https://swapi.co/api/planets/",
-		    "species": "https://swapi.co/api/species/",
-		    "starships": "https://swapi.co/api/starships/",
-		    "vehicles": "https://swapi.co/api/vehicles/"
-		};
+		Swapi.rootUrl = 'https://swapi.co/api/';
+		Swapi.categories;
+		Swapi.loading = true;
 
 		Swapi.getIdFromUrl = function(url) {
 			if(!url){
@@ -30,8 +15,37 @@ services.factory('SwapiService', ['$http',
             return(index);
         };
 
+		Swapi.getCategoryFromUrl = function(url) {
+			if(!url){
+				return('');
+			}
+            var index = url.split('/')[url.split('/').length - 3];
+            return(index);
+        };
+
+		Swapi.getCategories = function() {
+			if (Swapi.categories) {
+				return Swapi.categories;
+			} else {
+				var url = Swapi.rootUrl;
+				return $http.get(url).then(
+					function(response) {
+						Swapi.categories = response.data;
+						return (Swapi.categories);
+					},
+			    	function(data) {
+			        	Swapi.handleError();
+			    	}
+				);
+			}
+        };
+
+		Swapi.getCategories().then(function() {
+			Swapi.loading = false;
+		});
+
 		Swapi.getDataPage = function(category, overridePage = null) {
-			var url = Swapi.urls[category];
+			var url = Swapi.categories[category];
 			if(overridePage) {
 				url += '?page=' + overridePage;
 			}
@@ -47,7 +61,7 @@ services.factory('SwapiService', ['$http',
         };
 
 		Swapi.search = function(category, val) {
-			var url = Swapi.urls[category] + '?search=' + val;
+			var url = Swapi.categories[category] + '?search=' + val;
 			return $http.get(url).then(
 				function(response) {
 					return response;
@@ -60,7 +74,7 @@ services.factory('SwapiService', ['$http',
         };
 
 		Swapi.item = function(category,id) {
-            var url = Swapi.urls[category] + id + '/';
+            var url = Swapi.categories[category] + id + '/';
             return $http.get(url).then(
 				function(response) {
                     return response;

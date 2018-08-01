@@ -4,11 +4,19 @@ angularApp.controller('MainCtrl', [
     '$location',
     function($scope, SwapiService, $location) {
         $scope.loading = true;
-        $scope.categories = SwapiService.categories;
-        $scope.loading = false;
+        $scope.categories = null;
+		$scope.parent = {};
+		$scope.parent.selectedCategory = null;
+		$scope.parent.page = 1;
+
+		SwapiService.getCategories().then(function(categories){
+			$scope.categories = categories;
+			$scope.loading = false;
+		});
 
         $scope.selectCategory = function(category) {
-            $location.url(category.toLowerCase());
+			$scope.parent.page = 1;
+            $scope.parent.selectedCategory = category;
         };
     }
 ]);

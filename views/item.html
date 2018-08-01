@@ -1,0 +1,38 @@
+<a id="item"></a>
+<div ng-include="'shared/spinner.html'" ng-if="loading && !error"></div>
+
+<div class="panel-container" ng-if="!loading && !error">
+	<div class="panel panel-default text-center" ng-if="item">
+
+		<div class="panel-header">
+			<h2>{{ parent.selectedCategory | translate}}: {{ getItemAttributeValue(item, 0) }}</h2>
+		</div>
+
+		<div class="panel-body flex">
+			<div ng-if="key !== 'url'" ng-repeat="(key, value) in item" class="col-sm-4">
+				<ul class="list-group">
+					<li ng-if="isArray(value)" class="list-group-item list-group-item-info list-group-title">{{ key | translate }} ({{value.length}})</li>
+					<li ng-if="!isArray(value)" class="list-group-item list-group-item-info list-group-title">{{ key | translate }}</li>
+					<li ng-if="isArray(value) && value.length > 0" ng-repeat="v in value track by $index" class="list-group-item">{{ v }}</li>
+					<li ng-if="isArray(value) && value.length == 0" class="list-group-item">{{ 'none' | translate }}</li>
+					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited')" class="list-group-item">{{ value }}</li>
+					<li ng-if="!isArray(value) && (key ==='created' || key === 'edited')" class="list-group-item">{{ value | date }}</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	<div ng-if="!item">
+
+		<div class="page-header">
+			<h1>404</h1>
+		</div>
+
+		<a href="#!/">{{ 'home' | translate}}</a>
+
+	</div>
+</div>
+<div ng-include="'shared/error.html'" ng-if="error"></div>
+<div ng-if "errorMessage.length">
+	<h1>{{errorMessage}}</h1></div>

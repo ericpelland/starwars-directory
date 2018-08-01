@@ -6,13 +6,16 @@
 			<h2>{{ 'categories' | translate }}</h2>
 		</div>
 		<div class="panel-body flex">
-			<div class="col-sm-4" ng-repeat="category in categories" ng-click="selectCategory(category)">
+			<div class="col-sm-4" ng-repeat="(category, value) in categories" ng-click="selectCategory(category)">
 				<ul class="list-group">
-					<li class="list-group-item list-group-item-info list-group-title">{{ category | translate}}</li>
+					<li class="button list-group-item list-group-item-info list-group-title">{{ category | translate}}</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
+<div ng-controller="CategoryCtrl" ng-include="'views/category.html'" ng-if="parent.selectedCategory"></div>
+
+
 <div ng-include="'shared/error.html'" ng-if="error"></div>
 <div ng-if"errorMessage.length"><h1>{{errorMessage}}</h1></div>
