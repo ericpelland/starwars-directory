@@ -14,18 +14,7 @@ angularApp.controller('VehicleCtrl', [
 		$scope.error = false;
 		$scope.errorMessage = '';
 		$scope.getIdFromUrl = SwapiService.getIdFromUrl;
-
-        $scope.loading = function() {
-            if (!$scope.loadingVehicle ||
-                !$scope.loadingFilms ||
-				!$scope.loadingPilots
-            ) {
-                return false;
-            } else {
-                return true;
-            }
-        };
-
+		
         SwapiService.item('vehicles', $scope.id)
             .then(function(returnedVehicle) {
 				if (returnedVehicle) {

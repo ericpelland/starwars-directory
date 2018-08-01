@@ -22,20 +22,6 @@ angularApp.controller('FilmCtrl', [
 		$scope.errorMessage = '';
 		$scope.getIdFromUrl = SwapiService.getIdFromUrl;
 
-        $scope.loading = function() {
-            if (!$scope.loadingFilm ||
-                !$scope.loadingPlanets ||
-				!$scope.loadingCharacters ||
-                !$scope.loadingStarships ||
-                !$scope.loadingVehicles ||
-                !$scope.loadingSpecies
-            ) {
-                return false;
-            } else {
-                return true;
-            }
-        };
-
         SwapiService.item('films', $scope.id)
             .then(function(returnedFilm) {
 				if (returnedFilm) {

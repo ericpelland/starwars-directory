@@ -51,6 +51,19 @@
     animation: spin 2s linear infinite;
 }
 
+.sm-loader {
+    margin: auto;
+    border: 16px solid #f3f3f3;
+    margin-top: 15px;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-bottom: 16px solid blue;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
 @-webkit-keyframes spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -74,6 +87,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
+	left: 0px;
 }
 
 .page-header {
@@ -120,6 +134,7 @@ h1 {
 
 .col-sm-4 {
     margin-bottom: 10px;
+	min-height: 100px;
 }
 
 body {

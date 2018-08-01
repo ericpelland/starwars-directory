@@ -20,20 +20,6 @@ angularApp.controller('PersonCtrl', [
 		$scope.errorMessage = '';
 		$scope.getIdFromUrl = SwapiService.getIdFromUrl;
 
-        $scope.loading = function() {
-            if (!$scope.loadingPerson ||
-                !$scope.loadingFilms ||
-                !$scope.loadingStarships ||
-                !$scope.loadingVehicles ||
-                !$scope.loadingHomeworld ||
-                !$scope.loadingSpecies
-            ) {
-                return false;
-            } else {
-                return true;
-            }
-        };
-
         SwapiService.item('people', $scope.id)
             .then(function(returnedPerson) {
 				if (returnedPerson) {

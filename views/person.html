@@ -1,6 +1,6 @@
-<div ng-include="'shared/spinner.html'" ng-if="loading() && !error"></div>
+<div ng-include="'shared/spinner.html'" ng-if="loadingPerson && !error"></div>
 
-<div class="panel-container" ng-if="!loading() && !error">
+<div class="panel-container" ng-if="!loadingPerson && !error">
 	<div class="panel panel-default text-center" ng-if="person.name">
 
 		<div class="panel-header">
@@ -11,26 +11,6 @@
 			<p>
 
 				<div class="panel-body flex">
-					<div class="col-sm-4">
-						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{ 'films' | translate}} ({{films.length}})</li>
-							<li ng-repeat="film in films" class="list-group-item"><a href="#!/film/{{getIdFromUrl(film.url)}}">{{ film.title }}<a/></li>
-						</ul>
-					</div>
-					<div class="col-sm-4">
-						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{'starships piloted' | translate}} ({{starships.length}})</li>
-							<li ng-repeat="starship in starships" class="list-group-item"><a href="#!/starship/{{getIdFromUrl(starship.url)}}">{{ starship.name }}</a></li>
-							<li ng-if="starships.length === 0" class="list-group-item">{{ 'none' | translate }}</li>
-						</ul>
-					</div>
-					<div class="col-sm-4">
-						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{'vehicles piloted' | translate}} ({{vehicles.length}})</li>
-							<li ng-repeat="vehicle in vehicles" class="list-group-item"><a href="#!/vehicle/{{getIdFromUrl(vehicle.url)}}">{{ vehicle.name }}</a></li>
-							<li ng-if="vehicles.length === 0" class="list-group-item">{{ 'none' | translate }}</li>
-						</ul>
-					</div>
 					<div class="col-sm-4">
 						<ul class="list-group">
 							<li class="list-group-item list-group-item-info list-group-title">{{'birth year' | translate}}</li>
@@ -84,8 +64,30 @@
 					</div>
 					<div class="col-sm-4">
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{ 'species' | translate}} ({{species.length}})</li>
-							<li ng-repeat="s in species" class="list-group-item"><a href="#!/speciesdetail/{{getIdFromUrl(s.url)}}">{{ s.name }}</a></li>
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'species' | translate}} ({{species.length}})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingSpecies"></div></li>
+							<li ng-if="!loadingSpecies" ng-repeat="s in species" class="list-group-item"><a href="#!/speciesdetail/{{getIdFromUrl(s.url)}}">{{ s.name }}</a></li>
+							<li ng-if="species.length === 0 && !loadingSpecies" class="list-group-item">{{ 'none' | translate }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'films' | translate}} ({{films.length}})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingFilms"></div></li>
+							<li ng-if="!loadingFilms" ng-repeat="film in films" class="list-group-item"><a href="#!/film/{{getIdFromUrl(film.url)}}">{{ film.title }}<a/></li>
+							<li ng-if="films.length === 0 && !loadingFilms" class="list-group-item">{{ 'none' | translate }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{'starships piloted' | translate}} ({{starships.length}})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingStarships"></div></li>
+							<li ng-if="!loadingStarships" ng-repeat="starship in starships" class="list-group-item"><a href="#!/starship/{{getIdFromUrl(starship.url)}}">{{ starship.name }}</a></li>
+							<li ng-if="starships.length === 0 && !loadingStarships" class="list-group-item">{{ 'none' | translate }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{'vehicles piloted' | translate}} ({{vehicles.length}})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingVehicles"></div></li>
+							<li ng-if="!loadingVehicles" ng-repeat="vehicle in vehicles" class="list-group-item"><a href="#!/vehicle/{{getIdFromUrl(vehicle.url)}}">{{ vehicle.name }}</a></li>
+							<li ng-if="vehicles.length === 0 && !loadingVehicles" class="list-group-item">{{ 'none' | translate }}</li>
 						</ul>
 					</div>
 				</div>

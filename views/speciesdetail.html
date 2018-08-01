@@ -1,6 +1,6 @@
-<div ng-include="'shared/spinner.html'" ng-if="loading() && !error"></div>
+<div ng-include="'shared/spinner.html'" ng-if="loadingSpecies && !error"></div>
 
-<div class="panel-container" ng-if="!loading() && !error">
+<div class="panel-container" ng-if="!loadingSpecies && !error">
 	<div class="panel panel-default text-center" ng-if="species.name">
 
 		<div class="panel-header">
@@ -66,21 +66,18 @@
 						</ul>
 					</div>
 
-
-
-
-
-
 					<div class="col-sm-4">
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{ 'people' | translate }} ({{people.length}})</li>
-							<li ng-repeat="person in people" class="list-group-item"><a href="#!/person/{{getIdFromUrl(person.url)}}">{{ person.name }}</a></li>
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'people' | translate }} ({{people.length}})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingPeople"></div></li>
+							<li ng-if="!loadingPeople" ng-repeat="person in people" class="list-group-item"><a href="#!/person/{{getIdFromUrl(person.url)}}">{{ person.name }}</a></li>
+							<li ng-if="people.length === 0 && !loadingPeople" class="list-group-item">{{ 'none' | translate }}</li>
 						</ul>
 					</div>
 					<div class="col-sm-4">
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{ 'films' | translate}} ({{ films.length }})</li>
-							<li ng-repeat="film in films" class="list-group-item"><a href="#!/film/{{getIdFromUrl(film.url)}}">{{ film.title }}</li>
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'films' | translate}} ({{ films.length }})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingFilms"></div></li>
+							<li ng-if="!loadingFilms" ng-repeat="film in films" class="list-group-item"><a href="#!/film/{{getIdFromUrl(film.url)}}">{{ film.title }}</li>
+							<li ng-if="films.length === 0 && !loadingFilms" class="list-group-item">{{ 'none' | translate }}</li>
 						</ul>
 					</div>
 				</div>

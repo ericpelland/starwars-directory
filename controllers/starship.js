@@ -15,17 +15,6 @@ angularApp.controller('StarshipCtrl', [
 		$scope.errorMessage = '';
 		$scope.getIdFromUrl = SwapiService.getIdFromUrl;
 
-        $scope.loading = function() {
-            if (!$scope.loadingStarship ||
-                !$scope.loadingFilms ||
-				!$scope.loadingPilots
-            ) {
-                return false;
-            } else {
-                return true;
-            }
-        };
-
         SwapiService.item('starships', $scope.id)
             .then(function(returnedStarship) {
 				if (returnedStarship) {

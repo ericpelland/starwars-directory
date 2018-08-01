@@ -15,17 +15,6 @@ angularApp.controller('SpeciesDetailCtrl', [
 		$scope.errorMessage = '';
 		$scope.getIdFromUrl = SwapiService.getIdFromUrl;
 
-        $scope.loading = function() {
-            if (!$scope.loadingSpecies ||
-                !$scope.loadingFilms ||
-				!$scope.loadingPeople
-            ) {
-                return false;
-            } else {
-                return true;
-            }
-        };
-
         SwapiService.item('species', $scope.id)
             .then(function(returnedSpecies) {
 				if (returnedSpecies) {

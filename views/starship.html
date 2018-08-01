@@ -86,14 +86,16 @@
 
 					<div class="col-sm-4">
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{ 'pilots' | translate }} ({{pilots.length}})</li>
-							<li ng-repeat="pilot in pilots" class="list-group-item"><a href="#!/person/{{getIdFromUrl(pilot.url)}}">{{ pilot.name }}</a></li>
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'pilots' | translate }} ({{pilots.length}})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingPilots"></li>
+							<li ng-if="!loadingPilots" ng-repeat="pilot in pilots" class="list-group-item"><a href="#!/person/{{getIdFromUrl(pilot.url)}}">{{ pilot.name }}</a></li>
+							<li ng-if="pilots.length === 0 && !loadingPilots" class="list-group-item">{{ 'none' | translate }}</li>
 						</ul>
 					</div>
 					<div class="col-sm-4">
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-info list-group-title">{{ 'films' | translate}} ({{ films.length }})</li>
-							<li ng-repeat="film in films" class="list-group-item"><a href="#!/film/{{getIdFromUrl(film.url)}}">{{ film.title }}</li>
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'films' | translate}} ({{ films.length }})<div ng-include="'shared/sm-spinner.html'" ng-if="loadingFilms"></li>
+							<li ng-if="!loadingFilms" ng-repeat="film in films" class="list-group-item"><a href="#!/film/{{getIdFromUrl(film.url)}}">{{ film.title }}</li>
+							<li ng-if="films.length === 0 && !loadingFilms" class="list-group-item">{{ 'none' | translate }}</li>
 						</ul>
 					</div>
 				</div>

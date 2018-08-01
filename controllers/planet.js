@@ -14,17 +14,6 @@ angularApp.controller('PlanetCtrl', [
 		$scope.errorMessage = '';
 		$scope.getIdFromUrl = SwapiService.getIdFromUrl;
 
-        $scope.loading = function() {
-            if (!$scope.loadingPlanet ||
-                !$scope.loadingFilms ||
-				!$scope.loadingResidents
-            ) {
-                return false;
-            } else {
-                return true;
-            }
-        };
-
         SwapiService.item('planets', $scope.id)
             .then(function(returnedPlanet) {
 				if (returnedPlanet) {
