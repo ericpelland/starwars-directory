@@ -6,23 +6,23 @@ angularApp.controller('MainCtrl', [
         $scope.loading = true;
         $scope.categories = null;
         $scope.parent = {
-			selectedCategory: null,
-			page: 1
-		};
+            selectedCategory: null,
+            page: 1
+        };
 
-		// get the categories and urls from the api root
+        // get the categories and urls from the api root
         SwapiService.getCategories().then(function(categories) {
             $scope.categories = categories;
             $scope.loading = false;
         });
 
-		// select a category to search and view the items
+        // select a category to search and view the items
         $scope.selectCategory = function(category) {
             $scope.parent.page = 1;
             $scope.parent.selectedCategory = category;
         };
 
-		$scope.getItemAttributeValue = function(item, index) {
+        $scope.getItemAttributeValue = function(item, index) {
             return (item[Object.keys(item)[index]]);
         };
 
@@ -33,10 +33,10 @@ angularApp.controller('MainCtrl', [
             return '';
         };
 
-		$scope.scrollTo = function(identifier) {
-			$('html, body').animate({
-				scrollTop: $(identifier).offset().top
-			}, 1000);
-		};
+        $scope.scrollTo = function(identifier) {
+            $('html, body').animate({
+                scrollTop: $(identifier).offset().top
+            }, 1000);
+        };
     }
 ]);
