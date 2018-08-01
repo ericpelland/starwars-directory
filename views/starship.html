@@ -1,0 +1,114 @@
+<div ng-include="'shared/spinner.html'" ng-if="loading() && !error"></div>
+
+<div class="panel-container" ng-if="!loading() && !error">
+	<div class="panel panel-default text-center" ng-if="starship.name">
+
+		<div class="panel-header">
+			<h2>{{ 'starships' | translate}}: {{ starship.name }}</h2>
+		</div>
+
+		<p><a href="#!/">{{ 'home' | translate}}</a>
+			<p>
+
+				<div class="panel-body flex">
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'model' | translate}}</li>
+							<li class="list-group-item">{{ starship.model }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'starship class' | translate }}</li>
+							<li class="list-group-item">{{ starship.starship_class }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'manufacturer' | translate}}</li>
+							<li class="list-group-item">{{ starship.manufacturer }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'cost in credits' | translate}}</li>
+							<li class="list-group-item">{{ starship.cost_in_credits }} credits</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'length' | translate}}</li>
+							<li class="list-group-item">{{ starship.length }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'crew members' | translate }}</li>
+							<li class="list-group-item">{{ starship.crew }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'passengers' | translate}}</li>
+							<li class="list-group-item">{{ starship.passengers }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'max atmosphering speed' | translate }}</li>
+							<li class="list-group-item">{{ starship.max_atmosphering_speed }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'hyperdrive rating' | translate }}</li>
+							<li class="list-group-item">{{ starship.hyperdrive_rating }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'max megalights per hour' | translate }}</li>
+							<li class="list-group-item">{{ starship.MGLT }}</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'cargo capacity' | translate }}</li>
+							<li class="list-group-item">{{ starship.cargo_capacity }} kg</li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'max time between resupply' | translate }}</li>
+							<li class="list-group-item">{{ starship.consumables }}</li>
+						</ul>
+					</div>
+
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'pilots' | translate }} ({{pilots.length}})</li>
+							<li ng-repeat="pilot in pilots" class="list-group-item"><a href="#!/person/{{getIdFromUrl(pilot.url)}}">{{ pilot.name }}</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-info list-group-title">{{ 'films' | translate}} ({{ films.length }})</li>
+							<li ng-repeat="film in films" class="list-group-item"><a href="#!/film/{{getIdFromUrl(film.url)}}">{{ film.title }}</li>
+						</ul>
+					</div>
+				</div>
+
+	</div>
+
+	<div ng-if="!starship.name">
+
+		<div class="page-header">
+			<h1>404</h1>
+		</div>
+
+		<a href="#!/">{{ 'home' | translate}}</a>
+
+	</div>
+</div>
+<div ng-include="'shared/error.html'" ng-if="error"></div>
+<div ng-if"errorMessage.length"><h1>{{errorMessage}}</h1></div>

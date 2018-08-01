@@ -58,7 +58,21 @@ var translations = {
 		"designation" : "Designation",
 		"language" : "Language",
 		"average lifespan": "Average Lifespan",
-		"average height": "Average Height"
+		"average height": "Average Height",
+		"model": "Model",
+		"starship class": "Starship Class",
+		"vehicle class": "Vehicle Class",
+		'pilots': "Pilots",
+		'max time between resupply': "Max Time Between Resupply",
+		'cargo capacity': "Cargo Capacity",
+		'max megalights per hour': "Max Megalights per Hour",
+		'hyperdrive rating': "Hyperdrive Rating",
+		'max atmosphering speed': "Max Atmosphering Speed",
+		'passengers': "Passengers",
+		'crew members': "Crew Members",
+		'length': "Length",
+		'cost in credits': "Cost in Credits",
+		'manufacturer': "Manufacturer"
 	}
 };
 
@@ -113,14 +127,34 @@ angularApp.config(function($routeProvider) {
             templateUrl: 'views/species.html',
             controller: 'SpeciesCtrl',
             controllerAs: 'species'
-        }).when('/speciesdetal', {
-            templateUrl: 'views/speciesdetail.html',
-            controller: 'SpeciesDetailCtrl',
-            controllerAs: 'speciesdetail'
         }).when('/speciesdetail/:id', {
             templateUrl: 'views/speciesdetail.html',
             controller: 'SpeciesDetailCtrl',
             controllerAs: 'speciesdetail'
+        }).when('/starships', {
+            templateUrl: 'views/starships.html',
+            controller: 'StarshipsCtrl',
+            controllerAs: 'starships'
+        }).when('/starships/:page', {
+            templateUrl: 'views/starships.html',
+            controller: 'StarshipsCtrl',
+            controllerAs: 'starshipsdetail'
+        }).when('/starship/:id', {
+            templateUrl: 'views/starship.html',
+            controller: 'StarshipCtrl',
+            controllerAs: 'starshipdetail'
+        }).when('/vehicles', {
+            templateUrl: 'views/vehicles.html',
+            controller: 'VehiclesCtrl',
+            controllerAs: 'vehicles'
+        }).when('/vehicles/:page', {
+            templateUrl: 'views/vehicles.html',
+            controller: 'VehiclesCtrl',
+            controllerAs: 'vehiclesdetail'
+        }).when('/vehicle/:id', {
+            templateUrl: 'views/vehicle.html',
+            controller: 'VehicleCtrl',
+            controllerAs: 'vehicledetail'
         }).otherwise('/');
 
 });
