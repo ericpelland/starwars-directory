@@ -19,6 +19,7 @@ angularApp.controller('MainCtrl', [
         // select a category to search and view the items
         $scope.selectCategory = function(category) {
             $scope.parent.page = 1;
+			$scope.parent.selectedItem = null;
             $scope.parent.selectedCategory = category;
         };
 
