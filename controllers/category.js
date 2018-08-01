@@ -39,7 +39,9 @@ angularApp.controller('CategoryCtrl', [
                     $scope.items = data.data.results;
                     $scope.loading = false;
                     // Scroll to section
-                    $scope.scrollTo("#category");
+					if (!hadItem) {
+						$scope.scrollTo("#category");
+					}
                 } else {
                     $scope.error = true;
                     $scope.errorMessage = "Failed to retrieve data.  Check network connection.";
