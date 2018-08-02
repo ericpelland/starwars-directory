@@ -16,17 +16,23 @@
 		<div class="panel-body flex">
 			<div ng-if="key !== 'url'" ng-repeat="(key, value) in item" class="col-sm-4">
 				<ul class="list-group">
+					<!-- Title -->
 					<li ng-if="isArray(value)" class="list-group-item list-group-item-info list-group-title">{{ key | translate }} ({{value.length}})</li>
 					<li ng-if="!isArray(value)" class="list-group-item list-group-item-info list-group-title">{{ key | translate }}</li>
 
+					<!-- Is Array -->
 					<li ng-if="isArray(value) && value.length > 0 && links[v]" ng-repeat="v in value track by $index" class="list-group-item"><a href="" ng-click="switchItem(links[v])">{{ v }}</a></li>
 					<li ng-if="isArray(value) && value.length > 0 && !links[v]" ng-repeat="v in value track by $index" class="list-group-item">{{ v }}</li>
 
-					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited' && !key.includes('date')) && links[v]" class="list-group-item"><a href="" ng-click="switchItem(links[value])">{{ value }}</a></li>
-					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited' && !key.includes('date')) && !links[v]" class="list-group-item">{{ value }}</li>
-
-					<li ng-if="!isArray(value) && (key ==='created' || key === 'edited' || key.includes('date'))" class="list-group-item">{{ value | date }}</li>
+					<!-- Empty Array -->
 					<li ng-if="isArray(value) && value.length == 0" class="list-group-item">{{ 'none' | translate }}</li>
+
+					<!-- Not Array -->
+					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited' && !key.includes('date')) && (links[value] && value !== item[getItemAttributeKey(item,0)])" class="list-group-item"><a href="" ng-click="switchItem(links[value])">{{ value }}</a></li>
+					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited' && !key.includes('date')) && (links[value] && value === item[getItemAttributeKey(item,0)])" class="list-group-item">{{ value }}</li>
+					<li ng-if="!isArray(value) && (key !=='created' && key !== 'edited' && !key.includes('date')) && !links[value]" class="list-group-item">{{ value }}</li>
+					<li ng-if="!isArray(value) && (key ==='created' || key === 'edited' || key.includes('date'))" class="list-group-item">{{ value | date }}</li>
+
 				</ul>
 			</div>
 		</div>
